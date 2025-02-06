@@ -13,6 +13,7 @@ HEARTS_IMAGES = [
 GameConfig = {
     heartsBase: 10,
     heartsMultiplier: 5,
+    vibrateDuration: 100,
     currentScreen: 0,
     width: 0,
     height: 0,
@@ -116,7 +117,7 @@ function clickHeart (index) {
 
     console.log('CLICKED HEART', index);
 
-    window.navigator.vibrate(200);
+    window.navigator.vibrate(GameConfig.vibrateDuration);
 
     const heart = GameConfig.heartsContainer[index];
     heart.el.remove();
@@ -183,7 +184,7 @@ function nextLevel () {
 
 function copyPromocode (el) {
     return () => {
-        window.navigator.vibrate(200);
+        window.navigator.vibrate(GameConfig.vibrateDuration);
 
         el.focus();
 
