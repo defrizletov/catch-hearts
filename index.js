@@ -184,5 +184,5 @@ function nextLevel () {
 function copyPromocode (value) {
     window.navigator.vibrate(200);
 
-    navigator.clipboard.writeText(value);
+    return () => navigator.clipboard.writeText(value);
 };
