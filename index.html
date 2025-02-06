@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лови Сердца</title>
+    <style>
+        @font-face {
+            font-family: 'TTNooks';
+            src: url('./assets/fonts/TTNooks-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: url('./assets/fonts/HelveticaNeue-Bold.otf');
+        }
+
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow: hidden;
+        }
+        body {
+            background-image: url('./assets/images/background.jpg');
+            background-size: 100% 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .screen {
+            position: absolute;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 5%;
+            height: 100%;
+            width: 90%;
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10%;
+        }
+        .header {
+            font-family: 'TTNooks', sans-serif;
+            font-size: 36px;
+            color: white;
+            width: 75%;
+            text-align: center;
+            position: relative;
+            top: -20px;
+        }
+        .text {
+            font-family: 'Helvetice Neue', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: white;
+        }
+        .button_red {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            width: 146px;
+            height: 45px;
+            color: #FFDAE5;
+            background-color: #D43745;
+            border: #F05080 2px;
+            border-style: solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button_pink {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            width: 315px;
+            height: 45px;
+            color: #D43745;
+            background-color: #FFDAE5;
+            border: #D43745 2px;
+            border-style: solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 10%;
+        }
+        .game-container {
+            width: 100vw;
+            height: 100vh;
+        }
+        .heart {
+            position: absolute;
+            width: 148.5px;
+            height: 144px;
+        }
+        *[data-screen] {
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="./assets/images/logo.png"></img>
+
+    <div class="screen" data-screen="0" style="display: none">
+        <span class="header">ПОРА ПО ПАРАМ</span>
+
+        <br>
+        
+        <span class="text" style="font-weight: 700;">
+            14 февраля мы объявляем днем любви 
+            к себе. Именно поэтому в День Святого Валентина никто не останется 
+            без пары — пары красивой обуви. 
+        </span>
+
+        <br>
+
+        <span class="text" style="font-weight: 700;">
+            Предлагаем сыграть в игру. Ловите сердечки — чем больше уровней 
+            вы пройдете, тем больше будет скидка на покупки в приложении ASH. Максимальная скидка — 15%.            
+        </span>
+
+        <div id="startGame" class="button_red" style="
+        position: absolute;
+        bottom: 10%;
+        width: 181px;
+        height: 47px;
+        ">НАЧАТЬ ИГРУ</div>
+    </div>
+
+    <div class="screen" data-screen="1" style="display: none">
+        <span class="header">1-Й УРОВЕНЬ ПРОЙДЕН!</span>
+
+        <br>
+        
+        <span class="text">
+            ВЫ ПОЛУЧАЕТЕ ПРОМОКОД НА СКИДКУ 5%
+            НА ПОКУПКИ В ПРИЛОЖЕНИИ ASH.
+        </span>
+
+        <br>
+
+        <div class="button_red">LOVE5</div>
+
+        <br>
+
+        <span class="text">
+            ХОТИТЕ СКИДКУ 10%?
+            ПЕРЕХОДИТЕ НА СЛЕДУЮЩИЙ УРОВЕНЬ.
+        </span>
+
+        <div id="goButton" class="button_pink">ПЕРЕЙТИ К СЛЕДУЮЩЕМУ УРОВНЮ</div>
+    </div>
+
+    <div class="screen" data-screen="2" style="display: none">
+        <span class="header">2-Й УРОВЕНЬ ПРОЙДЕН!</span>
+
+        <br>
+        
+        <span class="text">
+            ВЫ ПОЛУЧАЕТЕ ПРОМОКОД НА СКИДКУ 10%
+            НА ПОКУПКИ В ПРИЛОЖЕНИИ ASH.
+        </span>
+
+        <br>
+
+        <div class="button_red">LOVE10&</div>
+
+        <br>
+
+        <span class="text">
+            ХОТИТЕ СКИДКУ 15%?
+            ПЕРЕХОДИТЕ НА СЛЕДУЮЩИЙ УРОВЕНЬ.
+        </span>
+
+        <div id="goButton" class="button_pink">ПЕРЕЙТИ К СЛЕДУЮЩЕМУ УРОВНЮ</div>
+    </div>
+
+    <div class="screen" data-screen="3" style="display: none">
+        <span class="header">УРА! ВЫ ПРОШЛИ ВСЕ УРОВНИ!</span>
+
+        <br>
+        
+        <span class="text">
+            ИСПОЛЬЗУЙТЕ ПРОМОКОД
+            НА СКИДКУ 15%.
+        </span>
+
+        <br>
+
+        <div class="button_red">LOVE15!</div>
+
+        <br>
+
+        <span class="text">
+            ПОБАЛУЙТЕ СЕБЯ И ВЫБЕРИТЕ ТО,
+            О ЧЕМ ДАВНО МЕЧТАЛИ!
+        </span>
+
+        <div id="goButton" class="button_pink">В КАТАЛОГ</div>
+    </div>
+
+    <div class="screen" data-screen="4" style="display: none">
+        <span class="header">ПОПРОБУЙТЕ ЕЩЕ РАЗ</span>
+
+        <br>
+        
+        <span class="text">ЧТОБЫ ПРОЙТИ НА СЛЕДУЮЩИЙ УРОВЕНЬ И ПОЛУЧИТЬ ПРОМОКОД, НУЖНО ПОЙМАТЬ ВСЕ СЕРДЕЧКИ.</span>
+
+        <br>
+
+        <span class="text">МЫ ВЕРИМ В ВАС!</span>
+
+        <br>
+
+        <img src="./assets/images/heart0.png" width="35px" height="30px"></img>
+
+        <div id="goButton" class="button_pink">ИГРАТЬ ЗАНОВО</div>
+    </div>
+
+    <div class="game-container" data-screen="5" style="display: none"></div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
