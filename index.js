@@ -33,7 +33,7 @@ getRandomInt = (min, max) => {
 makeOnclick(HTML_ELEMENTS.startButton, startGame);
 
 HTML_ELEMENTS.goButtons.map(el => makeOnclick(el, nextLevel));
-HTML_ELEMENTS.promoCodes.map(el => makeOnclick(el, copyPromocode(el.innerText)));
+HTML_ELEMENTS.promoCodes.map(el => makeOnclick(el, copyPromocode(el)));
 
 showScreen(0);
 
@@ -181,8 +181,12 @@ function nextLevel () {
     startGame();
 };
 
-function copyPromocode (value) {
-    window.navigator.vibrate(200);
+function copyPromocode (el) {
+    return () => {
+        window.navigator.vibrate(200);
 
-    return () => navigator.clipboard.writeText(value);
+        el.focus();
+
+        navigator.clipboard.writeText(el.innerText);
+    };
 };
