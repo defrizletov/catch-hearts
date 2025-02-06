@@ -2,7 +2,8 @@ const HTML_ELEMENTS = {
     startButton: document.querySelector('#startGame'),
     gameContainer: document.querySelector('.game-container'),
     goButtons: [...document.querySelectorAll('#goButton')],
-    allScreens: [...document.querySelectorAll('[data-screen]')]
+    allScreens: [...document.querySelectorAll('[data-screen]')],
+    promoCodes: [...document.querySelectorAll('#promoCode')]
 },
 HEARTS_IMAGES = [
     './assets/images/heart0.png',
@@ -32,6 +33,7 @@ getRandomInt = (min, max) => {
 makeOnclick(HTML_ELEMENTS.startButton, startGame);
 
 HTML_ELEMENTS.goButtons.map(el => makeOnclick(el, nextLevel));
+HTML_ELEMENTS.promoCodes.map(el => makeOnclick(el, copyPromocode(el.innerText)));
 
 showScreen(0);
 
@@ -114,6 +116,8 @@ function clickHeart (index) {
 
     console.log('CLICKED HEART', index);
 
+    window.navigator.vibrate(200);
+
     const heart = GameConfig.heartsContainer[index];
     heart.el.remove();
     heart.removed = true;
@@ -175,4 +179,10 @@ function nextLevel () {
     };
 
     startGame();
+};
+
+function copyPromocode (value) {
+    window.navigator.vibrate(200);
+
+    navigator.clipboard.writeText(value);
 };
