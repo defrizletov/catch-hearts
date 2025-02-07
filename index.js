@@ -1,6 +1,6 @@
 const HTML_ELEMENTS = {
     startButton: document.querySelector('#startGame'),
-    gameContainer: document.querySelector('.game-container'),
+    gameContainer: document.querySelector('#gameContainer'),
     goButtons: [...document.querySelectorAll('#goButton')],
     allScreens: [...document.querySelectorAll('[data-screen]')],
     promoCodes: [...document.querySelectorAll('#promoCode')]
@@ -116,8 +116,8 @@ function clickHeart (index) {
     if(!GameConfig.rendering) return;
 
     console.log('CLICKED HEART', index);
-
-    window.navigator.vibrate(GameConfig.vibrateDuration);
+    
+    vibrate();
 
     const heart = GameConfig.heartsContainer[index];
     heart.el.remove();
@@ -184,10 +184,16 @@ function nextLevel () {
 
 function copyPromocode (el) {
     return () => {
-        window.navigator.vibrate(GameConfig.vibrateDuration);
+        vibrate();
 
         el.focus();
 
         navigator.clipboard.writeText(el.innerText);
     };
+};
+
+function vibrate () {
+    try {
+        window.navigator?.vibrate?.(GameConfig.vibrateDuration);
+    } catch {};
 };

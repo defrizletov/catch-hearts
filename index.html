@@ -24,6 +24,9 @@
             user-select: none;
             overflow: hidden;
         }
+        *[data-screen] {
+            transition: all 1s;
+        }
         body {
             background-image: url('./assets/images/background.jpg');
             background-size: 100% 100%;
@@ -91,17 +94,14 @@
             position: absolute;
             bottom: 10%;
         }
-        .game-container {
-            width: 100vw;
-            height: 100vh;
-        }
         .heart {
             position: absolute;
             width: 148.5px;
             height: 144px;
         }
-        *[data-screen] {
-            transition: all 1s;
+        #gameContainer {
+            width: 100vw;
+            height: 100vh;
         }
     </style>
 </head>
@@ -224,7 +224,7 @@
         <div id="goButton" class="button_pink">ИГРАТЬ ЗАНОВО</div>
     </div>
 
-    <div class="game-container" data-screen="5" style="display: none"></div>
+    <div id="gameContainer" data-screen="5" style="display: none"></div>
 
     <script src="./index.js"></script>
 </body>
