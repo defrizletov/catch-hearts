@@ -50,7 +50,7 @@ function initGame () {
 };
 
 function startGame () {
-    console.log('LEVEL', GameConfig.level);
+    if(GameConfig.rendering) return;
 
     showScreen(5);
 
@@ -115,8 +115,6 @@ function renderHearts (now) {
 function clickHeart (index) {
     if(!GameConfig.rendering) return;
 
-    console.log('CLICKED HEART', index);
-    
     vibrate();
 
     const heart = GameConfig.heartsContainer[index];
@@ -138,8 +136,6 @@ function clickHeart (index) {
 
 function checkResult () {
     if(GameConfig.heartsContainer.length === GameConfig.heartsContainer.filter(x => x.removed).length) {
-        console.log('NICE!');
-
         if(GameConfig.level+1 === GameConfig.levelsCount) showScreen(3);
         else showScreen(GameConfig.level+1);
     };
@@ -168,8 +164,6 @@ function showScreen (screen) {
 };
 
 function nextLevel () {
-    console.log('NEXT LEVEL');
-
     if(GameConfig.level+1 === GameConfig.levelsCount) return showScreen(0);
 
     GameConfig.level++;
