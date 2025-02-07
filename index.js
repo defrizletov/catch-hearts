@@ -124,6 +124,7 @@ function clickHeart (index) {
     const explosion = document.createElement('img');
     explosion.src = HEARTS_IMAGES[2];
     explosion.className = 'heart';
+    explosion.style.pointerEvents = 'none';
     explosion.style.top = `${heart.y}px`;
     explosion.style.left = `${heart.x}px`;
 
