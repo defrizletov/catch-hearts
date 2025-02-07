@@ -24,7 +24,7 @@ GameConfig = {
     losed: false,
     inited: false
 },
-makeOnclick = (el, callback) => el.addEventListener('click', ({ isTrusted }) => isTrusted && callback()),
+makeOnclick = (el, callback) => el.addEventListener('pointerdown', ({ isTrusted }) => isTrusted && callback()),
 getRandomInt = (min, max) => {
     min = Math.ceil(min);
 
