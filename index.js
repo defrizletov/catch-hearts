@@ -31,6 +31,8 @@ getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (Math.floor(max) - min + 1)) + min;
 };
 
+window.addEventListener('contextmenu', e => e.preventDefault());
+
 makeOnclick(HTML_ELEMENTS.startButton, startGame);
 
 HTML_ELEMENTS.goButtons.map(el => makeOnclick(el, nextLevel));
